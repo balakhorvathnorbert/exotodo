@@ -8,7 +8,7 @@ export const createTodoStore = () => {
       const todoItem = {
         id: uuid(),
         content: todo.content,
-        deadline: todo.deadline
+        deadline: todo.deadline,
         isCompleted: false
       }
       this.todos.push(todoItem)
