@@ -7,6 +7,9 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
+import {TodoProvider} from "./src/context/TodosContext";
+import {useTodoStore} from "./src/context/TodosContext";
+import { Observer, useObserver } from "mobx-react";
 import {
   SafeAreaView,
   ScrollView,
@@ -28,16 +31,20 @@ type SectionProps = PropsWithChildren<{
 }>;
 
 function Section({children, title}: SectionProps): JSX.Element {
-  return (
-    <View className="mt-8 px-2">
-      <Text className="text-2xl text-black dark:text-white">
-        {title}
-      </Text>
-      <Text className="mt-2 text-lg text-black dark:text-white">
-        {children}
-      </Text>
-    </View>
-  );
+  const todoStore = useTodoStore()
+
+  return useObserver(() => {
+    return (
+      <View className="mt-8 px-2">
+        <Text className="text-2xl text-black dark:text-white">
+          {todoStore.todos[0].id}
+        </Text>
+        <Text className="mt-2 text-lg text-black dark:text-white">
+          {children}
+        </Text>
+      </View>
+    );
+  })
 }
 
 function App(): JSX.Element {
@@ -51,6 +58,7 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      <TodoProvider>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         className={backgroundStyle}>
@@ -72,6 +80,7 @@ function App(): JSX.Element {
           <LearnMoreLinks />
         </View>
       </ScrollView>
+      </TodoProvider>
     </SafeAreaView>
   );
 }

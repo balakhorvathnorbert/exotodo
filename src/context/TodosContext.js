@@ -4,7 +4,7 @@ import { useLocalObservable } from 'mobx-react';
 
 const TodosContext = createContext(null)
 export const TodoProvider = ({ children }) => {
-  const todoStore = useLocalObservable(createTodoStore);
+  const todoStore = useLocalObservable(createTodoStore)
 
   return (
     <TodosContext.Provider value={todoStore}>{children}</TodosContext.Provider>

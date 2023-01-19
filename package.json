@@ -10,10 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.2",
     "mobx": "^6.7.0",
+    "mobx-react": "^7.6.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.71.0",
+    "react-native-date-picker": "^4.2.6",
     "react-uuid": "^2.0.0"
   },
   "devDependencies": {
