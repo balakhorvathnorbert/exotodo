@@ -1,15 +1,17 @@
 import React from 'react';
-import {CheckBox, View} from 'react-native';
+import {View} from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
-const CheckBox = ({ isCompleted }) => {
+const Checkbox = ({ isCompleted }) => {
+  const completionIcon = isCompleted ? 'fa-regular fa-square-check' : 'fa-regular fa-square'
 
-  return (
-    <View className="flex-1 items-center justify-center">
-      <View className="mb-5">
-        <CheckBox value={isCompleted} />
+    return (
+      <View className="flex-1 items-center justify-center">
+        <View className="mb-5">
+          <FontAwesomeIcon icon={completionIcon} />
+        </View>
       </View>
-    </View>
-  );
+    );
 };
 
-export default CheckBox;
+export default Checkbox;

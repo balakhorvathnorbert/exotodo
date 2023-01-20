@@ -10,6 +10,7 @@ import type {PropsWithChildren} from 'react';
 import {TodoProvider} from "./src/context/TodosContext";
 import {useTodoStore} from "./src/context/TodosContext";
 import { Observer, useObserver } from "mobx-react";
+import TodoList from "./src/Components/TodoList/TodoList"
 import {
   SafeAreaView,
   ScrollView,
@@ -18,6 +19,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSquareCheck } from '@fortawesome/free-regular-svg-icons/faSquareCheck'
+import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare'
 
 import {
   DebugInstructions,
@@ -30,6 +35,8 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
+library.add(faSquareCheck, faSquare)
+
 function Section({children, title}: SectionProps): JSX.Element {
   const todoStore = useTodoStore()
 
@@ -37,7 +44,7 @@ function Section({children, title}: SectionProps): JSX.Element {
     return (
       <View className="mt-8 px-2">
         <Text className="text-2xl text-black dark:text-white">
-          {todoStore.todos[0].id}
+          Todos
         </Text>
         <Text className="mt-2 text-lg text-black dark:text-white">
           {children}
@@ -65,19 +72,8 @@ function App(): JSX.Element {
         <Header />
         <View className="bg-white dark:bg-black">
           <Section title="Step One">
-            Edit <Text className="font-bold">App.js</Text> to change this
-            screen and then come back to see your edits.
+            <TodoList />
           </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
         </View>
       </ScrollView>
       </TodoProvider>
