@@ -30,14 +30,9 @@ const TodoItem = ({ todo }) => {
   return (
     <Pressable onPress={alertMessage} onLongPress={() => navigation.navigate('Add', {todoId: todo.id})}>
     <View
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-		    borderRadius: 10,
-        backgroundColor: 'coral',
-      }}>
-      <Checkbox isCompleted={todo.isCompleted} />
-      <Text>{ todo.content }</Text>
+       className="flex flex-row rounded-xl p-2 m-2 shadow-2xl bg-gray-600">
+      <Checkbox isCompleted={todo.isCompleted} className="" />
+      <Text className="mr-4 truncate">{ todo.content } </Text>
       <Text>{ formattedDeadline(todo.deadline) }</Text>
     </View>
     </ Pressable>

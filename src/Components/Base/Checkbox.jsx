@@ -6,11 +6,9 @@ const Checkbox = ({ isCompleted }) => {
   const completionIcon = isCompleted ? 'fa-regular fa-square-check' : 'fa-regular fa-square'
 
     return (
-      <View className="flex-1 items-center justify-center">
-        <View className="mb-5">
+      <View className="flex-1 items-left">
           <FontAwesomeIcon icon={completionIcon} />
         </View>
-      </View>
     );
 };
 

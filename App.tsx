@@ -47,16 +47,17 @@ library.add(faSquareCheck, faSquare, faCalendarDays, faHouse, faTableList)
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = "bg-neutral-300 dark:bg-slate-900"
+  const backgroundStyle = "bg-green-300 dark:bg-slate-900"
 
   return (
-    
+    <>
       <TodoProvider>
       <NavigationContainer>
         <MyTabs />
         </NavigationContainer>
       </TodoProvider>
-    
+    <Text className="font-bold text-green-800">Hello</Text>
+    </>
   );
 }
 
