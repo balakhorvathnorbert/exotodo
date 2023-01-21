@@ -12,6 +12,11 @@ export const createTodoStore = () => {
         isCompleted: false
       }
       this.todos.push(todoItem)
+      console.log('All of them', this.todos)
+    },
+    getTodo(id) {
+      const requestedTodo = this.todos.find((todo) => todo.id === id)
+      return requestedTodo
     },
     completeTodo(todo) {
       this.todos = this.todos.map(todoObject => todoObject.id === todo.id ? { ...todoObject, isCompleted: true } : todoObject)
@@ -24,7 +29,10 @@ export const createTodoStore = () => {
       if (todoToRemove !== -1) this.todos.splice(todoToRemove, 1)
     },
     alterTodo(todo) {
-      this.todos = this.todos.map(todoObject => todoObject.id === todo.id ? {...todo} : todoObject)
+      this.todos = this.todos.map(todoObject => todoObject.id === todo.id ? {...todoObject, todo} : todoObject)
+    },
+    deleteTodo(todo) {
+      this.todos.splice(this.todos.indexOf(todo), 1);
     }
   }
 }

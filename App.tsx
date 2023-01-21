@@ -7,10 +7,14 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {TodoProvider} from "./src/context/TodosContext";
 import {useTodoStore} from "./src/context/TodosContext";
 import { Observer, useObserver } from "mobx-react";
 import TodoList from "./src/Components/TodoList/TodoList"
+import AddEditTodo from "./src/Components/AddEditTodo/AddEditTodo"
+import MyTabs from "./src/Navigation/Tabs"
 import {
   SafeAreaView,
   ScrollView,
@@ -23,6 +27,9 @@ import {
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons/faSquareCheck'
 import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare'
+import { faCalendarDays } from '@fortawesome/free-regular-svg-icons/faCalendarDays'
+import { faHouse } from '@fortawesome/free-solid-svg-icons/faHouse'
+import { faTableList } from '@fortawesome/free-solid-svg-icons/faTableList'
 
 import {
   DebugInstructions,
@@ -35,24 +42,7 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-library.add(faSquareCheck, faSquare)
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const todoStore = useTodoStore()
-
-  return useObserver(() => {
-    return (
-      <View className="mt-8 px-2">
-        <Text className="text-2xl text-black dark:text-white">
-          Todos
-        </Text>
-        <Text className="mt-2 text-lg text-black dark:text-white">
-          {children}
-        </Text>
-      </View>
-    );
-  })
-}
+library.add(faSquareCheck, faSquare, faCalendarDays, faHouse, faTableList)
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -60,24 +50,13 @@ function App(): JSX.Element {
   const backgroundStyle = "bg-neutral-300 dark:bg-slate-900"
 
   return (
-    <SafeAreaView className={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
+    
       <TodoProvider>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        className={backgroundStyle}>
-        <Header />
-        <View className="bg-white dark:bg-black">
-          <Section title="Step One">
-            <TodoList />
-          </Section>
-        </View>
-      </ScrollView>
+      <NavigationContainer>
+        <MyTabs />
+        </NavigationContainer>
       </TodoProvider>
-    </SafeAreaView>
+    
   );
 }
 
