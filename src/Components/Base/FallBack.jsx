@@ -6,7 +6,6 @@ const Fallback = () => {
   return (
     <View
       style={{
-        
         height: 100,
         padding: 20,
         marginTop: 20,
