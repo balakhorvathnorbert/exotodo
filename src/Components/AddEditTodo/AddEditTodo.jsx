@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useFocusEffect } from '@react-navigation/native';
-import { StyleSheet, TextInput, Button, View, Pressable } from "react-native";
+import { StyleSheet, Text, TextInput, Button, View, Pressable, Modal } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import DatePicker from 'react-native-date-picker';
 
 import {useTodoStore} from "../../context/TodosContext";
 
-const AddEditTodo = ({ route }) => {
+const AddEditTodo = ({ navigation, route }) => {
   const [text, setText] = useState("");
   const [deadline, setDeadline] = useState(new Date());
   const [open, setOpen] = useState(false)
@@ -38,24 +38,35 @@ const AddEditTodo = ({ route }) => {
     }
    todoId ? todoStore.alterTodo(todo) : todoStore.addTodo(todo)
     changeHandler("");
+    navigation.navigate('Home')
   };
 
+  const formattedDeadline = (deadline) => {
+    const month = String(deadline).split(" ")[1]
+    const day = String(deadline).split(" ")[2]
+    return `${day} ${month}`
+  }
+  
   return (
-    <View>
+    <View className="flex flex-1 mt-10">
       <TextInput
         style={styles.input}
         placeholder="Add new todo..."
         onChangeText={changeHandler}
         value={text}
       />
+      <View className="flex flex-row gap-8 items-center">
       <Pressable onPress={() => setOpen(true)} title="">
-      <FontAwesomeIcon icon="fa-regular fa-calendar-days" />
+      <FontAwesomeIcon icon="fa-regular fa-calendar-days" size="38" />
       </Pressable>
+      <Text className="text-lg">{ formattedDeadline(deadline) }</Text>
+      </View>
       <DatePicker
         modal
         open={open}
         date={deadline}
         mode="date"
+        size={30}
         onConfirm={(date) => {
           setOpen(false)
           setDeadline(date)
@@ -64,11 +75,14 @@ const AddEditTodo = ({ route }) => {
           setOpen(false)
         }}
       />
+      <View style={{flex: 1, justifyContent: 'flex-end', width: '100%'}}>
       <Button
         onPress={() => submitAndClear(text)}
         title={typeOfHandler}
         color="#668aff"
+        className=""
       />
+      </View>
     </View>
   );
 };
@@ -78,8 +92,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 8,
     paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
+    
+    fontSize: 26,
+    color: "gray",
+    
   },
 });
 

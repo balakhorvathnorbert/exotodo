@@ -1,16 +1,21 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-const Fallback = ({ todo }) => {
+const Fallback = () => {
   return (
     <View
       style={{
-        display: 'flex',
-        flexDirection: 'row',
+        
         height: 100,
         padding: 20,
+        marginTop: 20,
+        marginBottom: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
-      <Text>No todo left...</Text>
+       <FontAwesomeIcon icon="fa-regular fa-face-smile" size={58} />
+       <Text className="mt-4 font-bold text-xl">No more todos left...</Text>
     </View>
   );
 };
