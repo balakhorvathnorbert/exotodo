@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Pressable, Alert } from 'react-native';
-import Checkbox from '../Base/Checkbox';
+import Checkbox from '../base/Checkbox';
 import {useTodoStore} from "../../context/TodosContext";
 import { useNavigation } from '@react-navigation/native';
 

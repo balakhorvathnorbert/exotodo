@@ -4,12 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View,
   Pressable
 } from 'react-native';
 
@@ -19,7 +13,7 @@ const AddEditTodoScreen = () => {
 
   return (
       <Stack.Navigator>
-        <Stack.Screen name="Add" component={AddEditTodo} options={({ route, navigation }) => ({
+        <Stack.Screen name="Add" component={AddEditTodo} options={({ navigation }) => ({
           headerLeft: () => (
             <Pressable
               onPress={() => navigation.goBack()}

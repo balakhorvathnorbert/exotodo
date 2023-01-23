@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useFocusEffect } from '@react-navigation/native';
-import { StyleSheet, Text, TextInput, Button, View, Pressable } from "react-native";
+import { StyleSheet, TextInput, Button, View, Pressable } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import DatePicker from 'react-native-date-picker';
-import { Observer, useObserver } from "mobx-react";
 
 import {useTodoStore} from "../../context/TodosContext";
 

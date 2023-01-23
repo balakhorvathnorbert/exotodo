@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View} from 'react-native';
 import {observer, inject} from 'mobx-react';
-import { Observer, useObserver } from "mobx-react";
+import { useObserver } from "mobx-react";
 
 import {useTodoStore} from "../../context/TodosContext";
-import TodoItem from "../TodoItem/TodoItem"
-import FallBack from "../Base/FallBack"
+import TodoItem from "../todoitem/TodoItem"
+import FallBack from "../base/FallBack"
 
 const TodoList = observer(({ todos }) => {
   const todoStore = useTodoStore()
