@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, ScrollView, Button, Pressable } from 'react-native';
+import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
-import TodoList from "../components/todoList/TodoList"
+import TodoList from "../components/todolist/TodoList"
 import AddEditTodoScreen from "../screens/AddEditTodoScreen"
 
 const Tab = createBottomTabNavigator();

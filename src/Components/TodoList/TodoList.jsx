@@ -4,9 +4,9 @@ import { observer, inject } from 'mobx-react';
 import { useObserver } from "mobx-react";
 
 import { useTodoStore } from "../../context/TodosContext";
-import TodoItem from "../todoItem/TodoItem"
+import TodoItem from "../todoitem/TodoItem"
 import FallBack from "../base/FallBack"
-import ScreenTitle from "../screenTitle/ScreenTitle"
+import ScreenTitle from "../screentitle/ScreenTitle"
 
 const TodoList = observer(({ navigation, todos, route }) => {
 	const todoStore = useTodoStore()
