@@ -12,7 +12,6 @@ export const createTodoStore = () => {
         isCompleted: false,
       };
       this.todos.push(todoItem);
-      console.log('All of them', this.todos);
     },
     getTodo(id) {
       const requestedTodo = this.todos.find(todo => todo.id === id);
